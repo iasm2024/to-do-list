@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>To do List</title>
+</head>
+<style>
+   .container{
+        width: 700px;
+        height:700px;
+        background-color: rgb(19, 26, 97);
+
+        margin-left: 340px;
+        border-radius: 20px;
+        margin-top: 100px;
+        border: 2px solid rgb(90, 49, 167);
+        padding: 40px;
+    }
+    .main{
+         background-color: rgb(73, 149, 236);
+ }
+ 
+
+
+    .lab{
+       text-align: center;
+      margin-left: 150px;
+       color: white;
+       font-weight: 80px;
+       font-size: 33px;
+       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       
+    }
+   .ajout {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 6px 9px 20px;
+  list-style-type: none;
+  background: rgb(185, 194, 208);
+  font-size: 18px;
+  transition: 0.2s;
+  margin-bottom: 10px;
+  
+  /* make the list items unselectable */
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+.bouton{
+  background-color:yellow;
+  /* margin-right: 10px; */
+}
+span{
+   /* // font-family: 'Poppins','sans-serif'; */
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 21px;
+      font-weight:80px;
+    margin-right: 300px;
+    color: rgb(74, 72, 72);
+}
+tr{
+
+    background-color: rgb(133, 174, 225); 
+}
+table,tr,td{
+     /* border-collapse: collapse; */
+     border:2px solid  rgb(19, 26, 97);
+     margin-left:20px;
+     margin-top: 50px;
+     margin-bottom: 50px; 
+     padding-left: 20px;
+     padding-top: 10px;
+     padding-bottom: 8px;
+     padding-right: 8px;
+     background-color: rgb(133, 174, 225);
+}
+</style>
+
+ <body class="main" > 
+     <div class="container" id="divpere">
+        <label class="lab" id="divfils">Todo List</label>
+        <div class="input-group mb-3" >
+        <input type="text" class="form-control" placeholder="Add Task" aria-label="Recipient's username" aria-describedby="button-addon2" id="inp" >
+        <button  id="add" style="background-color: red;color: bisque;" class="btn btn-outline-secondary" >Ajouter</button>
+        <!-- <button  onclick="newElement()" >add</button> -->
+       </div> 
+       <table id="tab" >
+          
+          <tr id="row"> <td><span id="text">go to gym</span></td>
+        <td><button class="fa fa-trash btn btn-outline-secondary bouton"  id="delete"></button> </td><td><button id="check" class="fa fa-check btn btn-outline-secondary bouton"></button></td></tr> 
+
+       </table>
+       
+       
+   </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script>
+ //document.getElementById("delete").addEventListener("click",supprimer);
+ //document.getElementById("check").addEventListener("click",check);
+  let container=document.getElementById("divpere");
+
+///la fonction pour creer un nouveau element dans le liste
+
+
+$(document).ready(function()
+{
+$("#add").click(function(){
+    let input=$("#inp").val();
+    if(input != "")
+    {  var row=`<tr id="row"> <td><span id="text">`+input+`</span></td> <td><button class="fa fa-trash btn btn-outline-secondary bouton"  id="delete"></button> </td><td><button id="check"  class="fa fa-check btn btn-outline-secondary bouton"></button></td></tr> `;
+       $("#tab").append(row);
+       $("#inp").val(''); 
+    }
+    else alert("You should add a task");
+})
+});
+
+///fonction de suppression d'un element de la liste
+$(document).on('click','#delete',function()
+{
+    $(this).parent().parent().remove();
+});
+
+///fonction pour checker un element
+$(document).on('click','#check',function()
+{
+    $(this).parent().parent().find("#text").css({"text-decoration":"line-through"});
+});
+
+
+
+ </script>
+   
+
+</body>
+
+</html>
